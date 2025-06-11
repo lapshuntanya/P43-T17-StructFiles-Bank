@@ -252,7 +252,7 @@ int findLast_if(T* arr, int size, bool (*func)(T value))
 }
 
 template <typename T>
-void sort(T* arr, int size, bool (*cmp)(T, T)) {
+void mySort(T* arr, int size, bool (*cmp)(T, T)) {
 	for (int i = 0; i < size - 1; ++i) {
 		for (int j = 0; j < size - i - 1; ++j) {
 			if (cmp(arr[j], arr[j + 1])) {

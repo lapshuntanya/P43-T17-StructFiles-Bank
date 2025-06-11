@@ -78,6 +78,7 @@ int main()
         cout << " 1 - show list of clients\n";
         cout << " 2 - open a new card\n";
         cout << " 3 - topup card\n";
+        cout << " 4 - sort by cash\n";
         cout << "--------------------------\n";
         cout << ">>> ";
         cin >> menu;
@@ -116,6 +117,16 @@ int main()
                 cout << "Input cash: "; cin >> temp_cash;
                 arr[id].cash += temp_cash;
                 arr[id].showCard();
+            }
+            break;
+        case 4:
+           // mySort<Card>(arr, NClients, [](Card a, Card b) { return b.cash > a.cash; });
+            mySort<Card>(arr, NClients, [](Card a, Card b) { return strcmp(a.name, b.name) > 0; });
+
+            temp_card.showTitle();
+            for (int i = 0; i < NClients; i++)
+            {
+                arr[i].showLine();
             }
             break;
         }
