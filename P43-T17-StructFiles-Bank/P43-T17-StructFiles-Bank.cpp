@@ -82,6 +82,7 @@ int main()
             }
             break;
         case 2:
+            cin.ignore(); // 2 enter => menu=2,  cin.ignore()=enter
             temp_card.createCard(); // !!!!!!
             addItemBack(arr, NClients, temp_card);
             cout << "Added!\n";
