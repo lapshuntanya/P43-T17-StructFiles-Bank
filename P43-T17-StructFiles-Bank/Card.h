@@ -1,4 +1,4 @@
-#pragma once
+#pragma once // delete
 #include <iostream>
 #include <cstring>
 #include <cstdio>
@@ -39,4 +39,18 @@ struct Card
 			<< setw(11) << "CASH (UAH)" << "|" << endl;
 		cout << "==================================================\n";
 	}
+
+	void saveToTextFile(FILE* file) {
+		fprintf(file, "\n%s\n%lu %lf", name, number, cash);
+	}
+	/*
+	Lesya Ukrainka
+	1234561 100.000000*/
+	void loadFromTextFile(FILE* fp) {
+		fscanf_s(fp, "\n");
+		fgets(name, 100, fp); //Lesya Ukrainka\n
+		name[strlen(name)] = '\0'; //Lesya Ukrainka\0
+		fscanf_s(fp, "%lu %lf", &number, &cash);
+	}
+
 };

@@ -1,8 +1,17 @@
 ﻿#include <iostream>
 #include "ArrayTemplate.h"
+#include "Card.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    srand(time(0));
+
+    Card Dmytro; //name="undefined", number=0, cash=0
+
+    Dmytro.createCard();
+    cout << "\n\n";
+
+    Dmytro.showTitle();
+    Dmytro.showLine();
 }
  
