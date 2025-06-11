@@ -49,7 +49,7 @@ struct Card
 	void loadFromTextFile(FILE* fp) {
 		fscanf_s(fp, "\n");
 		fgets(name, 100, fp); //Lesya Ukrainka\n
-		name[strlen(name)] = '\0'; //Lesya Ukrainka\0
+		name[strlen(name) - 1] = '\0'; //Lesya Ukrainka\0
 		fscanf_s(fp, "%lu %lf", &number, &cash);
 	}
 
