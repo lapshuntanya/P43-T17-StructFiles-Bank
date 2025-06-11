@@ -92,5 +92,16 @@ int main()
     } while (menu != 0);
 
   //====================== Save =========================
+
+    fopen_s(&file, "bank.txt", "w");
+    if (file != nullptr) {
+        fprintf(file, "%d", NClients);
+        for (int i = 0; i < NClients; i++)
+        {
+            arr[i].saveToTextFile(file);
+        }
+        fclose(file);
+        cout << "Saved!\n";
+    }
 }
  
