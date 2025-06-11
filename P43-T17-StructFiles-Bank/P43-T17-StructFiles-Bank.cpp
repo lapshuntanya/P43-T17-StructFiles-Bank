@@ -51,7 +51,44 @@ int main()
     //load
 #endif
   //====================== Menu =========================
-  
+    int menu = 0;
+    Card temp_card;
+    char text[100];
+    unsigned long temp_number;
+    double temp_cash = 0;
+    int id = -1;
+
+    do
+    {
+        cout << "--------------------------\n";
+        cout << "|\t MENU:\n";
+        cout << "--------------------------\n";
+        cout << " 0 - exit and save\n";
+        cout << " 1 - show list of clients\n";
+        cout << " 2 - open a new card\n";
+        cout << "--------------------------\n";
+        cout << ">>> ";
+        cin >> menu;
+
+        switch (menu)
+        {
+        default:cout << "Error!\n";  break;
+        case 0: cout << "Bye =)\n"; break;
+        case 1: 
+            temp_card.showTitle();
+            for (int i = 0; i < NClients; i++)
+            {
+                arr[i].showLine();
+            }
+            break;
+        case 2:
+            temp_card.createCard(); // !!!!!!
+            addItemBack(arr, NClients, temp_card);
+            cout << "Added!\n";
+            break;
+        }
+
+    } while (menu != 0);
 
   //====================== Save =========================
 }
