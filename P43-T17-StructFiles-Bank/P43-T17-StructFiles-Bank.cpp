@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 #include "ArrayTemplate.h"
 #include "Card.h"
-#define CREATE_LOAD 1 // 1- Create, 0- Load
+#define CREATE_LOAD 0 // 1- Create, 0- Load
 
 int main()
 {
@@ -48,7 +48,18 @@ int main()
         {"Taras Shevchenko", 876543, 100}
     };
 #else
-    //load
+    fopen_s(&file, "bank.txt", "r");//!!!!!!!
+    if (file != nullptr) {
+        fscanf_s(file, "%d", &NClients);
+        arr = new Card[NClients]; // [ _ _ _ _]
+        for (int i = 0; i < NClients; i++)
+        {
+            arr[i].loadFromTextFile(file);
+        }
+        fclose(file);
+        cout << "Loaded!\n";
+    }
+
 #endif
   //====================== Menu =========================
     int menu = 0;
@@ -66,6 +77,7 @@ int main()
         cout << " 0 - exit and save\n";
         cout << " 1 - show list of clients\n";
         cout << " 2 - open a new card\n";
+        cout << " 3 - topup card\n";
         cout << "--------------------------\n";
         cout << ">>> ";
         cin >> menu;
@@ -86,6 +98,25 @@ int main()
             temp_card.createCard(); // !!!!!!
             addItemBack(arr, NClients, temp_card);
             cout << "Added!\n";
+            break;
+        case 3:
+            cout << "Input number of card: ";
+            cin >> temp_number;
+
+            id = -1;
+            for (int i = 0; i < NClients; i++)
+            {
+                if (arr[i].number == temp_number) {
+                    id = i; break;
+                }
+            }
+
+            if (id == -1) cout << "Not found!\n";
+            else {
+                cout << "Input cash: "; cin >> temp_cash;
+                arr[id].cash += temp_cash;
+                arr[id].showCard();
+            }
             break;
         }
 
